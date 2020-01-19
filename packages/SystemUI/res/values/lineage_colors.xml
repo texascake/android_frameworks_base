@@ -12,6 +12,9 @@
      limitations under the License.
 -->
 <resources>
-    <!-- App lock -->
-    <dimen name="applock_icon_dimension">54dp</dimen>
+    <!-- Binary clock -->
+    <color name="binary_clock_dot_color">#ffffff</color>
+    <color name="binary_clock_empty_dot_color">#ffffff</color>
+    <color name="binary_clock_ambient_dot_color">#ffffff</color>
+    <color name="binary_clock_ambient_empty_dot_color">#ffffff</color>
 </resources>
