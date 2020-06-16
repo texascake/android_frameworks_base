@@ -1109,6 +1109,13 @@ public class ApplicationInfo extends PackageItemInfo implements Parcelable {
     public int targetSandboxVersion;
 
     /**
+     * Flag to enable forceDark for the application
+     * @hide
+     */
+    @SystemApi
+    public boolean forceDarkOverride;
+
+    /**
      * The factory of this package, as specified by the &lt;manifest&gt;
      * tag's {@link android.R.styleable#AndroidManifestApplication_appComponentFactory}
      * attribute.
@@ -1455,6 +1462,7 @@ public class ApplicationInfo extends PackageItemInfo implements Parcelable {
         proto.write(ApplicationInfoProto.Version.TARGET_SDK_VERSION, targetSdkVersion);
         proto.write(ApplicationInfoProto.Version.VERSION_CODE, longVersionCode);
         proto.write(ApplicationInfoProto.Version.TARGET_SANDBOX_VERSION, targetSandboxVersion);
+        proto.write(ApplicationInfoProto.Version.FORCE_DARK_OVERRIDE, forceDarkOverride);
         proto.end(versionToken);
 
         if ((dumpFlags & DUMP_FLAG_DETAILS) != 0) {
@@ -1605,6 +1613,7 @@ public class ApplicationInfo extends PackageItemInfo implements Parcelable {
         networkSecurityConfigRes = orig.networkSecurityConfigRes;
         category = orig.category;
         targetSandboxVersion = orig.targetSandboxVersion;
+        forceDarkOverride = orig.forceDarkOverride;
         classLoaderName = orig.classLoaderName;
         splitClassLoaderNames = orig.splitClassLoaderNames;
         appComponentFactory = orig.appComponentFactory;
@@ -1686,6 +1695,7 @@ public class ApplicationInfo extends PackageItemInfo implements Parcelable {
         dest.writeInt(networkSecurityConfigRes);
         dest.writeInt(category);
         dest.writeInt(targetSandboxVersion);
+        dest.writeInt(forceDarkOverride ? 1 : 0);
         dest.writeString(classLoaderName);
         dest.writeStringArray(splitClassLoaderNames);
         dest.writeInt(compileSdkVersion);
@@ -1764,6 +1774,7 @@ public class ApplicationInfo extends PackageItemInfo implements Parcelable {
         networkSecurityConfigRes = source.readInt();
         category = source.readInt();
         targetSandboxVersion = source.readInt();
+        forceDarkOverride = source.readInt() != 0;
         classLoaderName = source.readString();
         splitClassLoaderNames = source.readStringArray();
         compileSdkVersion = source.readInt();

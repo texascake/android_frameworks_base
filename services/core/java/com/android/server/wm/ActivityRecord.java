@@ -1096,6 +1096,8 @@ public final class ActivityRecord extends ConfigurationContainer {
             // Gets launch display id from options. It returns INVALID_DISPLAY if not set.
             mHandoverLaunchDisplayId = options.getLaunchDisplayId();
         }
+        // Set per-app dark mode override options
+        info.applicationInfo.forceDarkOverride = mAtmService.shouldForceDarkTheme(packageName);
 
         if (mPerf == null)
             mPerf = new BoostFramework();
