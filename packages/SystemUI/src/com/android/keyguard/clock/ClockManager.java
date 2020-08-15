@@ -162,6 +162,7 @@ public final class ClockManager {
         addBuiltinClock(() -> new MNMLMinimalClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new LineageClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new IDEClockController(res, layoutInflater, colorExtractor, context));
+        addBuiltinClock(() -> new FluidClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new TuxClockController(res, layoutInflater, colorExtractor));
 
         // Store the size of the display for generation of clock preview.
